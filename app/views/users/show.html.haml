@@ -1,0 +1,24 @@
+%h1
+	Hello 
+	- if user_signed_in?
+		= current_user.email
+		%br
+		%br
+		- if current_user.email == @user.email
+			Your posts
+		- else
+			= @user.name + "'s posts"
+	- else
+		- if user_signed_in?
+			= @user.email
+		- else
+			Guest
+		%br
+		%br
+		= @user.name + "'s posts"
+	
+	
+%br
+= link_to "Edit User?", edit_user_registration_path
+
+= render 'posts/posts'
